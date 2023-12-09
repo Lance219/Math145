@@ -1,0 +1,140 @@
+\documentclass[12pt,letterpaper]{article}
+
+%\usepackage{url}
+\usepackage{fancyhdr,fancybox,comment}
+\usepackage{amstext}
+\usepackage{amsmath,amssymb,xcolor,enumerate}
+\usepackage{rotating}
+%\usepackage{multicol}
+%\usepackage{pictexwd,pictexplus}
+\usepackage{pictexwd}
+
+
+
+\setlength{\textwidth}{7in}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\parskip}{.3\baselineskip}
+\setlength{\topmargin}{-1.0in}
+%\setlength{\topmargin}{-0.2in}
+%\setlength{\topmargin}{-0in}
+\setlength{\textheight}{9.5in}
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\add}[1]{{\color{blue} #1}}
+\newcommand{\alert}[1]{{\color{red} #1}}
+\newcommand{\pnt}[1]{\textbf{[#1]}}
+\newcommand{\q}{\pnt{5} }
+\newcommand{\hint}[1]{\noindent{\color{purple} Hint: #1}}
+\renewcommand{\mark}[1]{\noindent{\color{red} #1}}
+\newcommand{\tot}[2]{\noindent\textsc{\footnotesize This homework is marked out of \textbf{#1} and graded out of \textbf{#2}}.}
+\newcommand{\ttt}{\tot{25}{20}}
+\renewcommand{\lg}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\leg}[2]{\left(\frac{#1}{#2}\right)}
+\def\R{{\mathbb R}}
+\def\Z{{\mathbb Z}}
+\def\N{{\mathbb N}}
+\def\Q{{\mathbb Q}}
+\def\C{{\mathbb C}}
+\def\F{{\mathbb F}}
+\def\lcm{{\rm lcm}}
+\def\prob#1{\vskip13pt\noindent\llap{{\bf #1:\ }}}
+\font\Bigrm=cmr12 scaled\magstep1
+
+%               Problem and Part
+\newcounter{problemnumber}
+\newcounter{partnumber}
+\newcommand{\Problem}{\stepcounter{problemnumber}\setcounter{partnumber}{0}\item[\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}]}
+\newcommand{\InProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{1.9in}{#1}}
+\newcommand{\InBigProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{2.75in}{#1}}
+\newcommand{\Part}{\stepcounter{partnumber}\item[(\alph{partnumber})]}
+\newcommand{\InPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{2.25in}{#1}}
+\newcommand{\InSmallPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{1.25in}{#1}}
+
+%% For Answerbox:
+\newcounter{answernumber}
+\newcommand{\Ans}{%
+  \stepcounter{answernumber}
+  \fbox{\parbox{.18in}{\hfil\theanswernumber\hfil}}
+}
+
+
+
+\pagestyle{empty}
+
+\begin{document}
+%\thispagestyle{fancy}
+%%
+\noindent{\Bigrm HW 9 due Friday November 17}
+
+%\ttt
+
+
+
+
+
+\prob1\pnt{6} Let $m\geq 2$ be an integer. Let $j,k$ be integers coprime to $m$. 
+\begin{enumerate}[(a)]
+    \item\pnt{3} Prove that $\displaystyle\frac{\zeta_m^j - 1}{\zeta_m^k - 1}\in\Z[\zeta_m]^\times.$
+
+\hint{$\ds\frac{\zeta_m^{dk} - 1}{\zeta_m^k - 1}\in\Z[\zeta_m]$.}
+    \item\pnt{2} Prove that if $\phi(m) > 2$, then there exist $j,k$ coprime to $m$ such that
+    $\displaystyle\left|\frac{\zeta_m^j - 1}{\zeta_m^k - 1}\right| > 1,$ where $|z|$ for a complex number $z$ is the usual complex modulus of $z$.
+
+    \hint{Compute $|\zeta_m^j - 1|^2$, remembering that $\zeta_m^j = \cos\big(\frac{2j\pi}{m}\big) + i\sin\big(\frac{2j\pi}{m}\big).$}
+    \item\pnt{1} Prove that if $\phi(m)\leq 2$, then $m = 2, 3, 4, 6$.
+\end{enumerate}
+
+\vspace{5pt}
+
+\prob2\q Let $n$ be an odd positive integer. Prove that $\Q(\zeta_n) = \Q(\zeta_n - \zeta_n^{-1}).$
+
+\hint{For any $\alpha\in\Q(\zeta_n)$, its minimal polynomial also has $\sigma(\alpha)$ as a root for all $\sigma\in\text{Aut}_\Q(\Q(\zeta_n)).$}
+
+\vspace{5pt}
+
+\prob3\q Let $p>2$ be a prime. Suppose $f(x)\in\Z[x]$ such that $f(\zeta_p^m) = f(\zeta_p)$ for every $m = 1,\ldots,p-1$. Prove that $f(\zeta_p) \in\Z.$ (Do not use Galois theory.)
+
+\hint{Can you write down a convenient basis of $\Q(\zeta_p)$ over $\Q$? }
+
+\vspace{5pt}
+
+\prob4\pnt{4} Let $p$ be an odd prime and let $k\in\N$. We consider $(\Z/p^k\Z)^\times$ in this problem. We say $\alpha\in\Z$ is a \textbf{primitive root} mod $p^k$ if $p\nmid\alpha$ and the order $o_{p^k}(\alpha) = \phi(p^k).$
+\begin{enumerate}[(a)]
+    %\item \pnt{2} Prove that for any integer $j\geq2$, we have $(1 + xp)^{p^{j-2}} = 1 + xp^{j-1}$ in $(\Z/p^j\Z)[x]$.
+    \item \pnt{2} Prove that there exists an integer $a$ that is a primitive root mod $p$ such that $\alpha^{p-1}\not\equiv 1\pmod{p^2}.$
+
+    \hint{If $\alpha^{p-1}\equiv 1\pmod{p^2}$, how can we adjust $\alpha$ to make it work?}
+    \item \pnt{2} Prove that the $\alpha$ in (b) is a primitive root mod $p^k$.
+
+    \hint{Prove that $a^{(p-1)p^{k-2}}\not\equiv 1\pmod{p^k}.$ You may use LTE (Lifting the exponent.)}
+\end{enumerate}
+In other words, $(\Z/p^k\Z)^\times\cong C_{p^{k-1}(p-1)}$ is cyclic.
+
+\vspace{5pt}
+
+
+\prob5\q Let $m\geq 2$ be an integer. In this problem, we answer the question: when is $(\Z/m\Z)^\times$ cyclic?
+
+\hint{(for all three parts) A cyclic group of order $n$ has a unique subgroup of order $d$, which is also cyclic, for every $d\mid n$.}
+\begin{enumerate}[(a)]
+    \item \pnt{2} Prove that $(\Z/2^k\Z)^\times$ is cyclic when $k = 1,2$ and not cyclic when $k\geq 3$.
+    \item \pnt{1} Prove that if positive integers $j$ and $k$ are not coprime, then $C_j\times C_k$ is not cyclic.
+    \item \pnt{2} Prove that $(\Z/m\Z)^\times$ is cyclic precisely when $m = 2,4,p^k,2p^k$ for some odd prime $p$ and positive integer $k$.
+\end{enumerate}
+
+
+\vspace{5pt}
+
+
+
+
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

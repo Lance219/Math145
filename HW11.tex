@@ -1,0 +1,123 @@
+\documentclass[12pt,letterpaper]{article}
+
+%\usepackage{url}
+\usepackage{fancyhdr,fancybox,comment}
+\usepackage{amstext}
+\usepackage{amsmath,amssymb,xcolor,enumerate}
+\usepackage{rotating}
+%\usepackage{multicol}
+%\usepackage{pictexwd,pictexplus}
+\usepackage{pictexwd}
+
+
+
+\setlength{\textwidth}{7in}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\parskip}{.3\baselineskip}
+\setlength{\topmargin}{-1.0in}
+%\setlength{\topmargin}{-0.2in}
+%\setlength{\topmargin}{-0in}
+\setlength{\textheight}{9.5in}
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\add}[1]{{\color{blue} #1}}
+\newcommand{\alert}[1]{{\color{red} #1}}
+\newcommand{\pnt}[1]{\textbf{[#1]}}
+\newcommand{\q}{\pnt{5} }
+\newcommand{\hint}[1]{\noindent{\color{purple} Hint: #1}}
+\renewcommand{\mark}[1]{\noindent{\color{red} #1}}
+\newcommand{\tot}[2]{\noindent\textsc{\footnotesize This homework is marked out of \textbf{#1} and graded out of \textbf{#2}}.}
+\newcommand{\ttt}{\tot{25}{20}}
+\renewcommand{\lg}[2]{\Big(\frac{#1}{#2}\Big)}
+\newcommand{\leg}[2]{\left(\frac{#1}{#2}\right)}
+\def\R{{\mathbb R}}
+\def\Z{{\mathbb Z}}
+\def\N{{\mathbb N}}
+\def\Q{{\mathbb Q}}
+\def\C{{\mathbb C}}
+\def\F{{\mathbb F}}
+\def\lcm{{\rm lcm}}
+\def\prob#1{\vskip13pt\noindent\llap{{\bf #1:\ }}}
+\font\Bigrm=cmr12 scaled\magstep1
+
+%               Problem and Part
+\newcounter{problemnumber}
+\newcounter{partnumber}
+\newcommand{\Problem}{\stepcounter{problemnumber}\setcounter{partnumber}{0}\item[\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}]}
+\newcommand{\InProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{1.9in}{#1}}
+\newcommand{\InBigProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{2.75in}{#1}}
+\newcommand{\Part}{\stepcounter{partnumber}\item[(\alph{partnumber})]}
+\newcommand{\InPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{2.25in}{#1}}
+\newcommand{\InSmallPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{1.25in}{#1}}
+
+%% For Answerbox:
+\newcounter{answernumber}
+\newcommand{\Ans}{%
+  \stepcounter{answernumber}
+  \fbox{\parbox{.18in}{\hfil\theanswernumber\hfil}}
+}
+
+
+
+\pagestyle{empty}
+
+\begin{document}
+%\thispagestyle{fancy}
+%%
+\noindent{\Bigrm HW 11 due Wednesday December 6}
+
+%\ttt
+
+\prob1\pnt{4} Suppose $k$ is an integer such that $p = 6k+1$, $q = 12k+1$ and $r = 18k+1$ are all primes. Prove that $pqr$ is a Carmichael number.
+
+\vspace{5pt}
+
+\prob2\q Let $p,q$ be distinct odd primes and let $n = pq$. Prove that $n$ is not a Carmichael number.
+
+\hint{Find $a$ so that $a^{pq-1}\not\equiv1\pmod{pq}$ but arranging it to be $1$ mod $q$ but not $1$ mod $p$.}
+
+\vspace{5pt}
+
+\prob3\q Let $p>5$ be a prime. Let $q = \displaystyle\frac{4^p+1}{5}.$
+\begin{enumerate}[(a)]
+    \item \pnt{2} Prove that $q$ is an integer and is composite.
+    \item \pnt{3} Prove that $2^{(q-1)/2} \equiv -1\pmod{q}$.
+
+    \hint{The only thing we know mod $q$ is $4^p$.}
+\end{enumerate}
+
+\vspace{5pt}
+
+\prob4\q Prove that for any $n\in\N$, the Fermat number $F_n = 2^{2^n} + 1$ is prime if and only if $3^{(F_n - 1)/2}\equiv -1\pmod{F_n}$.
+
+\hint{($\Rightarrow$) $\ds 3^{(F_n-1)/2} \equiv \lg{3}{F_n}\pmod{F_n}$. ($\Leftarrow$) What could $o_{F_n}(3)$ be?}
+
+\vspace{5pt}
+
+\prob5\pnt{6} Let $n = p_1^{k_1}\cdots p_r^{k_r}$ be an integer where $p_1,\ldots,p_r$ are distinct odd primes and where $r\geq 2$ and $k_i \geq 1$. For $i=  1,\ldots, r$, write $p_i - 1=  2^{e_i}m_i$ where $e_i=\nu_2(p_i-1)$ and $m_i$ is odd. Let $e = \min\{e_1,\ldots,e_r\}$.
+\begin{enumerate}[(a)]
+    \item \pnt{2} Let $b$ be an integer coprime to $n$. Let $\alpha_i = o_{p_i^{k_i}}(b)$ for every $i=1,\ldots,r$. Suppose $\nu_2(\alpha_1),\ldots,\nu_2(\alpha_r)$ are not all equal. Prove that $o_n(b)$ is even and $b^{o_n(b)/2}\not\equiv -1\pmod{n}$.
+
+    \hint{$o_n(b) = \lcm(\alpha_1,\ldots,\alpha_r).$}
+    \item \pnt{1} Prove that if $\nu_2(\alpha_1),\ldots,\nu_2(\alpha_r)$ are all equal, then $o_n(b)$ is odd, or $o_n(b)$ is even and $b^{o_n(b)/2}\equiv -1\pmod{n}$.
+    \item \pnt{3} Prove that the number of $b\in(\Z/n\Z)^\times$ such that $o_n(b)$ is odd, or $o_n(b)$ is even and $b^{o_n(b)/2}\equiv -1\pmod{n}$ is $$\frac{\phi(n)}{2^{e_1 + \cdots + e_r}}\left(\frac{2^{re}-1}{2^r - 1}+1\right)$$
+    and prove that this number is at most $\phi(n)/2^{r-1}.$
+
+    \hint{Take a primitive root $g_i$ mod $p_i^{k_i}$, write $b = g_i^{c_i}$ and count the number of possible $c_i$.}
+\end{enumerate}
+
+
+\vspace{5pt}
+
+
+
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

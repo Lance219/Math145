@@ -1,0 +1,106 @@
+\documentclass[12pt,letterpaper]{article}
+
+%\usepackage{url}
+\usepackage{fancyhdr,fancybox,comment}
+\usepackage{amstext}
+\usepackage{amsmath,amssymb,xcolor,enumerate}
+\usepackage{rotating}
+%\usepackage{multicol}
+%\usepackage{pictexwd,pictexplus}
+\usepackage{pictexwd}
+
+
+
+\setlength{\textwidth}{7in}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\parskip}{.4\baselineskip}
+\setlength{\topmargin}{-1.0in}
+%\setlength{\topmargin}{-0.2in}
+%\setlength{\topmargin}{-0in}
+\setlength{\textheight}{9.5in}
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\add}[1]{{\color{blue} #1}}
+\newcommand{\alert}[1]{{\color{red} #1}}
+\newcommand{\pnt}[1]{\textbf{[#1]}}
+\newcommand{\q}{\pnt{5} }
+\newcommand{\hint}[1]{\noindent{\color{purple} Hint: #1}}
+\def\R{{\mathbb R}}
+\def\Z{{\mathbb Z}}
+\def\N{{\mathbb N}}
+\def\Q{{\mathbb Q}}
+\def\C{{\mathbb C}}
+\def\F{{\mathbb F}}
+\def\lcm{{\rm lcm}}
+\def\prob#1{\vskip13pt\noindent\llap{{\bf #1:\ }}}
+\font\Bigrm=cmr12 scaled\magstep1
+
+%               Problem and Part
+\newcounter{problemnumber}
+\newcounter{partnumber}
+\newcommand{\Problem}{\stepcounter{problemnumber}\setcounter{partnumber}{0}\item[\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}]}
+\newcommand{\InProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{1.9in}{#1}}
+\newcommand{\InBigProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{2.75in}{#1}}
+\newcommand{\Part}{\stepcounter{partnumber}\item[(\alph{partnumber})]}
+\newcommand{\InPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{2.25in}{#1}}
+\newcommand{\InSmallPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{1.25in}{#1}}
+
+%% For Answerbox:
+\newcounter{answernumber}
+\newcommand{\Ans}{%
+  \stepcounter{answernumber}
+  \fbox{\parbox{.18in}{\hfil\theanswernumber\hfil}}
+}
+
+
+
+\pagestyle{empty}
+
+\begin{document}
+%\thispagestyle{fancy}
+%%
+\noindent{\Bigrm HW 1 due Friday September 15}
+
+
+\prob1\q Let $a,b$ be positive integers with $\gcd(a,b) = 1$. 
+\begin{enumerate}[(a)]
+    \item \pnt{2} Prove that $ab - a - b$ cannot be written as $ax + by$ where $x,y$ are non-negative integers.
+
+    \item \pnt{3} Prove that for any integer $n > ab - a - b$, there exist non-negative integers $x,y$ such that $n = ax + by$.
+
+    \hint{The best chance for a solution is to take $x$ to be as small as possible and hope that the corresponding $y$ is non-negative.}
+
+    \hint{In order for some non-negative integer $x$ to be part of a solution, we need there to exist an integer $y$ so that $n - ax = by$. This suggests considering the set $S = \{x\in\Z\colon b\mid n - ax, x\geq 0\}$.}
+\end{enumerate}
+
+
+
+\prob2\pnt{5} Let $\Z_{\geq0}$ denote the set of non-negative integers. Let $f:\Z_{\geq0}\times\Z_{\geq0}\rightarrow\Z_{\geq0}$ be a function such that $f(b,a) = f(a,b) = f(b-a,a)$ for any integers $0\leq a\leq b$. Prove that $f(a,b) = f(\gcd(a,b),0)$ for any $a,b\in\Z_{\geq0}$.
+
+\hint{This screams induction. Induct on something that measures the ``size of $a$ and $b$''. This question is basically asking you to prove that the Euclidean Algorithm works, using induction. If you prove it without induction, make sure your wordings are precise enough.}
+
+\prob3\pnt{5} Let $a,m,n$ be positive integers. Prove that $\gcd(a^m-1, a^n-1) = a^{\gcd(m,n)}-1.$
+
+\hint{Define a convenient $f:\Z_{\geq0}\times\Z_{\geq0}\rightarrow\Z_{\geq0}$ and use Problem 2.}
+
+
+\prob4\pnt{5} Let $x,y,z$ be positive integers such that $\gcd(x,y,z) = 1$ and $\displaystyle \frac{1}{x} + \frac{1}{y} = \frac{1}{z}$. Prove that $x+y$ is a perfect square.
+
+\hint{A positive integer $n$ is a perfect square if and only if $\nu_p(n)$ is even for every prime $p$.}
+
+
+
+\prob5\pnt{5} Let $a_1,a_2,a_3,\ldots$ be a sequence of positive integers such that $\gcd(a_m,a_n) = \gcd(m,n)$ for any $m,n\in\N$ that are distinct. Prove that $a_m = m$ for any $m\in\N$.
+
+\hint{Prove $m\mid a_m$ first.}
+
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

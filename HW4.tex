@@ -1,0 +1,124 @@
+\documentclass[12pt,letterpaper]{article}
+
+%\usepackage{url}
+\usepackage{fancyhdr,fancybox,comment}
+\usepackage{amstext}
+\usepackage{amsmath,amssymb,xcolor,enumerate}
+\usepackage{rotating}
+%\usepackage{multicol}
+%\usepackage{pictexwd,pictexplus}
+\usepackage{pictexwd}
+
+
+
+\setlength{\textwidth}{7in}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\parskip}{.3\baselineskip}
+\setlength{\topmargin}{-1.0in}
+%\setlength{\topmargin}{-0.2in}
+%\setlength{\topmargin}{-0in}
+\setlength{\textheight}{9.5in}
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\add}[1]{{\color{blue} #1}}
+\newcommand{\alert}[1]{{\color{red} #1}}
+\newcommand{\pnt}[1]{\textbf{[#1]}}
+\newcommand{\q}{\pnt{5} }
+\newcommand{\hint}[1]{\noindent{\color{purple} #1}}
+\renewcommand{\mark}[1]{\noindent{\color{red} #1}}
+\newcommand{\tot}[2]{\noindent\textsc{\footnotesize This homework is marked out of \textbf{#1} and graded out of \textbf{#2}}.}
+\def\R{{\mathbb R}}
+\def\Z{{\mathbb Z}}
+\def\N{{\mathbb N}}
+\def\Q{{\mathbb Q}}
+\def\C{{\mathbb C}}
+\def\F{{\mathbb F}}
+\def\lcm{{\rm lcm}}
+\def\prob#1{\vskip13pt\noindent\llap{{\bf #1:\ }}}
+\font\Bigrm=cmr12 scaled\magstep1
+
+%               Problem and Part
+\newcounter{problemnumber}
+\newcounter{partnumber}
+\newcommand{\Problem}{\stepcounter{problemnumber}\setcounter{partnumber}{0}\item[\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}]}
+\newcommand{\InProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{1.9in}{#1}}
+\newcommand{\InBigProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{2.75in}{#1}}
+\newcommand{\Part}{\stepcounter{partnumber}\item[(\alph{partnumber})]}
+\newcommand{\InPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{2.25in}{#1}}
+\newcommand{\InSmallPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{1.25in}{#1}}
+
+%% For Answerbox:
+\newcounter{answernumber}
+\newcommand{\Ans}{%
+  \stepcounter{answernumber}
+  \fbox{\parbox{.18in}{\hfil\theanswernumber\hfil}}
+}
+
+
+
+\pagestyle{empty}
+
+\begin{document}
+%\thispagestyle{fancy}
+%%
+\noindent{\Bigrm HW 4 due Friday October 6}
+
+%\tot{25}{20}
+
+\prob1\pnt{4} Let $R$ be a finite commutative ring with $n$ elements. Prove that the characteristic of $R$ divides~$n$.
+
+\hint{Mimic the proof of $a^{|R^\times|} = 1$ for $a\in R^\times$ (Theorem 8.7) but replacing multiplication by addition to show that $n\cdot f(1) = 0$ in $R$ where $f:\Z\rightarrow R$ is the canonical homomorphism.}
+
+\prob2\q Let $R$ be a finite commutative ring with $n$ elements where $n$ is squarefree (so that $\nu_p(n) \leq 1$ for all primes $p$). Let $d$ be the characteristic of $R$ and let $m = n/d$, which is an integer by Problem 1. Let $J$ be the image of the unique homomorphism $\Z\rightarrow R$.
+\begin{enumerate}[(a)]
+    \item \pnt{3} Prove that for any $\alpha\in R$, we have $m\alpha \in J$.
+
+    \hint{Since $J$ is not necessarily an ideal, multiplication on the set $R/J$ of cosets is not well-defined, but addition is. Mimic (part of) your solution for Problem 1.}
+    \item \pnt{2} Prove that $d = n$.
+
+    \hint{What is $\gcd(d,m)$?}
+\end{enumerate}
+
+\noindent Note this implies that $R\cong \Z/n\Z$.
+
+
+\prob3\q For any $\alpha\in\C$, we write $\Z[\alpha]$ for the smallest subring of $\C$ containing $\alpha$. Prove that if there exists $\beta_1,\ldots,\beta_n\in\Z[\alpha]$ such that $\Z[\alpha]\subseteq\{c_1\beta_1 + \cdots + c_n\beta_n\colon c_1,\ldots,c_n\in\Z\}$, then there exists a monic polynomial $f(x)\in\Z[x]$ such that $f(\alpha) = 0$.
+
+\hint{The notation $\Z[\alpha]$ seems suggestive. How does it relate to $\Z[x]$?}
+
+
+
+\prob4\q A Euclidean domain is an integral domain $R$ with a function $f:R\backslash\{0\}\rightarrow\N\cup\{0\}$ such that if $a,b\in R$ with $a\neq 0$, there exists $q,r\in R$ such that $b = aq + r$ where either $r = 0$ or $f(r) < f(a)$. Examples of Euclidean domain include $\Z$ with $|.|$ and $F[x]$ with $\deg$ where $F$ is a field. 
+
+\noindent Prove that if $R$ is a Euclidean domain, then every ideal $I$ of $R$ is of the form $(a) = aR$ for some $a\in I$.
+
+\hint{Try proving this with $R = \Z$ and $f(a) = |a|$ first.}
+
+
+\prob5\pnt{6} In this question, you may assume that for an odd prime $p$, if there exists $a\in\Z$ with $a^2\equiv -2\pmod{p}$, then $p\equiv 1$ or $3$ mod $8$. For any integer $n\in\N$, let $a_n = 2^{2\cdot3^n} - 2^{3^n} + 1$.
+\begin{enumerate}[(a)]
+    \item \pnt{1} Prove that for any $n\in\N$, $\nu_3(a_n) = 1$.
+    
+    \hint{Try to express $a_n$ as $b_n^2 - 3c_n$ where $3\mid b_n$ and $3\nmid c_n$.}
+    \item \pnt{3} Prove that for any $n\in\N$, $a_n$ has a prime divisor bigger than $3$ that is congruent to $3$ mod~$8$.
+    
+    \hint{What must prime divisors of $2^{3^{n+1}} + 1$ be congruent to mod $8$? How does $a_n$ relate to $2^{3^{n+1}} + 1$? What is $a_n$ congruent to mod $8$?}
+    \item \pnt{1} Prove that for any positive integers $i<j$, $\gcd(a_i,a_j) = 3$.
+
+    \hint{Let $p$ be a prime divisor of $a_i$. Find $a_j$ mod $p$. Use this to prove that $3$ is the only possible common prime divisor of $a_i$ and $a_j$.}
+    \item \pnt{1} Prove that for any positive integer $n$, the number $2^{3^n}+1$ has at least $n$ distinct prime divisors of the form $8k+3$ for some integer $k\geq 0$.
+
+    \hint{How does $2^{3^n}+1$ relate to $a_1a_2\cdots a_{n-1}$?}
+\end{enumerate}
+
+
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

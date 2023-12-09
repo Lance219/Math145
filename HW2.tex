@@ -1,0 +1,124 @@
+\documentclass[12pt,letterpaper]{article}
+
+%\usepackage{url}
+\usepackage{fancyhdr,fancybox,comment}
+\usepackage{amstext}
+\usepackage{amsmath,amssymb, xcolor,enumerate}
+\usepackage{rotating}
+%\usepackage{multicol}
+%\usepackage{pictexwd,pictexplus}
+\usepackage{pictexwd}
+
+
+
+\setlength{\textwidth}{7in}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\parskip}{.3\baselineskip}
+\setlength{\topmargin}{-1.0in}
+%\setlength{\topmargin}{-0.2in}
+%\setlength{\topmargin}{-0in}
+\setlength{\textheight}{9.5in}
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\add}[1]{{\color{blue} #1}}
+\newcommand{\alert}[1]{{\color{red} #1}}
+\newcommand{\pnt}[1]{\textbf{[#1]}}
+\newcommand{\q}{\pnt{5} }
+\newcommand{\hint}[1]{\noindent{\color{purple} Hint: #1}}
+\def\R{{\mathbb R}}
+\def\Z{{\mathbb Z}}
+\def\N{{\mathbb N}}
+\def\Q{{\mathbb Q}}
+\def\C{{\mathbb C}}
+\def\F{{\mathbb F}}
+\def\lcm{{\rm lcm}}
+\def\prob#1{\vskip13pt\noindent\llap{{\bf #1:\ }}}
+\font\Bigrm=cmr12 scaled\magstep1
+
+%               Problem and Part
+\newcounter{problemnumber}
+\newcounter{partnumber}
+\newcommand{\Problem}{\stepcounter{problemnumber}\setcounter{partnumber}{0}\item[\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}]}
+\newcommand{\InProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{1.9in}{#1}}
+\newcommand{\InBigProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{2.75in}{#1}}
+\newcommand{\Part}{\stepcounter{partnumber}\item[(\alph{partnumber})]}
+\newcommand{\InPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{2.25in}{#1}}
+\newcommand{\InSmallPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{1.25in}{#1}}
+
+%% For Answerbox:
+\newcounter{answernumber}
+\newcommand{\Ans}{%
+  \stepcounter{answernumber}
+  \fbox{\parbox{.18in}{\hfil\theanswernumber\hfil}}
+}
+
+
+
+\pagestyle{empty}
+
+\begin{document}
+%\thispagestyle{fancy}
+%%
+\noindent{\Bigrm HW 2 due Friday September 22}
+
+
+
+\prob1\q A positive integer is said to be squarefree if it is not divisible by the square of any prime. 
+\begin{enumerate}[(a)]
+    \item \pnt{2} Prove that every positive integer can be written uniquely as $st^2$ where $s\in\N$ is squarefree and $t\in\N$.
+
+    \hint{What should the prime factorizations of $s$ and $t$ look like?}
+    \item \pnt{3} Use this (and not the prime number theorem) to prove that there is a constant $C>0$ such that $\displaystyle\pi(x) \geq C\log x$ for any real number $x\geq2$.
+
+    \hint{How many squarefree integers can be made from the primes less than $x$? How many squares are there less than $x$?}
+\end{enumerate} 
+This is Erd\"{o}s' proof of the infinitude of primes.
+
+\vspace{5pt}
+
+
+\prob2\pnt{5} Let $p$ be a prime. For any positive integer $n$, we can express it in base $p$ as $n = n_0 + n_1p + \cdots + n_kp^k$ and write $s_p(n)=n_0 + n_1 + \cdots + n_k$. Prove that $$\nu_p(n!) = \frac{n - s_p(n)}{p-1}.$$
+
+\hint{If $\nu_p(n) = \ell$, what do the base $p$ expansions of $n$ and $n-1$ look like?}
+
+\vspace{5pt}
+
+
+\prob3\pnt{5} Suppose $a,b,n$ are positive integers such that $a!b!$ divides $n!$. Prove that $\displaystyle a + b \leq n + 1 + 2\,\frac{\log n}{\log 2}$.
+
+\hint{Use Problem 2 to show that $\nu_2(m!)$ is not too far from $m$ for any $m\in\N$.}
+
+
+\vspace{5pt}
+
+
+\prob4\pnt{5} Let $m,n$ be positive integers such that $1\leq m\leq n$. Prove that $\displaystyle m\binom{n}{m} \mid \lcm(1,\ldots,n).$
+
+
+
+\vspace{5pt}
+
+
+\prob5\pnt{5} Let $n$ be a positive integer. 
+\begin{enumerate}[(a)]
+    \item \pnt{2} Prove that if $N$ is an integer such that $n\binom{2n+1}{n}\mid N$ and $(n+1)\binom{2n+1}{n+1}\mid N$, then $$n(n+1)\binom{2n+1}{n}\mid N.$$
+
+    \item \pnt{2} Prove that $n4^n\leq \lcm(1,\ldots,2n+1)$.
+
+    \hint{One couldn't help but wonder why Part (a) is there.}
+    \item \pnt{1} Prove that for any integer $m\geq 7$, $\lcm(1,\ldots,m)\geq 2^m$.
+    
+\end{enumerate} 
+It then follows that for any integer $x\geq 2$, $\ds\pi(x) \geq \log 2\frac{x}{\log x}$ by checking the smaller values directly.
+
+\vspace{5pt}
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

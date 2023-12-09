@@ -1,0 +1,196 @@
+\documentclass[12pt,letterpaper]{article}
+
+%\usepackage{url}
+\usepackage{fancyhdr,fancybox,comment}
+\usepackage{amstext}
+\usepackage{amsmath,amssymb,xcolor,enumerate}
+\usepackage{rotating}
+%\usepackage{multicol}
+%\usepackage{pictexwd,pictexplus}
+\usepackage{pictexwd}
+
+
+
+\setlength{\textwidth}{7in}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\parskip}{.3\baselineskip}
+\setlength{\topmargin}{-1.0in}
+%\setlength{\topmargin}{-0.2in}
+%\setlength{\topmargin}{-0in}
+\setlength{\textheight}{9.5in}
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\add}[1]{{\color{blue} #1}}
+\newcommand{\alert}[1]{{\color{red} #1}}
+\newcommand{\pnt}[1]{\textbf{[#1]}}
+\newcommand{\q}{\pnt{5} }
+\newcommand{\hint}[1]{\noindent{\color{purple} Hint: #1}}
+\renewcommand{\mark}[1]{\noindent{\color{red} #1}}
+\newcommand{\tot}[2]{\noindent\textsc{\footnotesize This homework is marked out of \textbf{#1} and graded out of \textbf{#2}}.}
+\newcommand{\ttt}{\tot{25}{20}}
+\def\R{{\mathbb R}}
+\def\Z{{\mathbb Z}}
+\def\N{{\mathbb N}}
+\def\Q{{\mathbb Q}}
+\def\C{{\mathbb C}}
+\def\F{{\mathbb F}}
+\def\lcm{{\rm lcm}}
+\def\prob#1{\vskip13pt\noindent\llap{{\bf #1:\ }}}
+\font\Bigrm=cmr12 scaled\magstep1
+
+%               Problem and Part
+\newcounter{problemnumber}
+\newcounter{partnumber}
+\newcommand{\Problem}{\stepcounter{problemnumber}\setcounter{partnumber}{0}\item[\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}]}
+\newcommand{\InProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{1.9in}{#1}}
+\newcommand{\InBigProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{2.75in}{#1}}
+\newcommand{\Part}{\stepcounter{partnumber}\item[(\alph{partnumber})]}
+\newcommand{\InPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{2.25in}{#1}}
+\newcommand{\InSmallPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{1.25in}{#1}}
+
+%% For Answerbox:
+\newcounter{answernumber}
+\newcommand{\Ans}{%
+  \stepcounter{answernumber}
+  \fbox{\parbox{.18in}{\hfil\theanswernumber\hfil}}
+}
+
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+\newtheorem{lemma}{Lemma}
+\renewcommand{\lparen}[1]{\large(#1\large)}
+\newcommand{\paren}[1]{\left(#1\right)}
+
+
+\pagestyle{empty}
+
+\begin{document}
+%\thispagestyle{fancy}
+%%
+\noindent{\Bigrm HW 6 due Friday October 27}
+
+%\tot{25}{20}
+
+\prob1\q Let $p$ be a prime. Let $f(x)\in\F_p[x]$ be a monic irreducible polynomial of degree $n\geq1$. Let $\alpha = x + (f(x))$ in $F = \F_p[x]/(f(x))$. Prove that $f(x)$ factors in $F[x]$ as
+$$f(x) = (x - \alpha)(x - \alpha^p)\cdots (x - \alpha^{p^{n-1}}) = \prod_{i=0}^{n-1}(x - \alpha^{p^i}).$$
+\begin{proof}
+	We obviously have $F\cong \F_{p^n}$ by \textbf{Corrollary 10.3}. Thus $|F|=p^n, |F^\times|=p^n-1$.
+	
+	 Consider the identity map: $F\to F, x\mapsto x$. It sends $x+(f(x))$ to $\alpha$, so it must send $f(x)+(f(x))$ to $f(\alpha)$. Since $f(x)+(f(x))$ is $0$, we must have $f(\alpha)=0$. We obviously have $\alpha\ne 1$, for otherwise $(x-1)\in\F_p[x]$ would be a factor of $f(x)$ which will make $f(x)$ reducible in $\F_p[x]$.
+
+	We have $f(x^{p^n})=f(x)^{p^n}$ for $n\in\N$. We claim each $\alpha^{p^k}, k\in \N$, is a root of $f(x)$. Indeed, $f(\alpha)=0\implies f(\alpha)^{p^k}=f(\alpha^{p^k})=0$. In particular,  $A \coloneqq\{\alpha=\alpha^{p^0},\cdots,\alpha^{p^{n-1}}\}$ is a set of roots of $f(x)$, with $|A|=n$. To see this, we only need to show for all $0\le i<j\le n-1$, we have $\alpha^{p^i}\ne\alpha^{p^j}$. Let $\alpha=a^k$ for some primitive element $a$ in $F^\times$ and integer $0< k<p^n$. We have\[
+		\frac{\alpha^{p^j}}{\alpha^{p^i}} =\frac {a^{kp^j}}{a^{kp^i}} =\paren{a^{p^j-p^i}}^k\ne 1\implies a^{p^i}\ne a^{p^j}.
+	\]
+			
+			As $f(x)$ is of degree $n$, it can have at most $n$ distinct roots. So $A= \{x\in F: f(x)=0\}$. We conclude by saying that $f(x)$ factors in $F[x]$ as\[ f(x)=\prod_{i=0}^{n-1}(x - \alpha^{p^i}).\]
+	
+\end{proof}
+
+
+\pagebreak
+
+\prob2 Let $q=p^n$ be a prime power and let $k$ be a positive integer. Prove that
+$$\sum_{x\in\F_q} x^k = \begin{cases}
+    0&\mbox{ if }q-1\nmid k,\\
+    -1&\mbox{ if }q-1\mid k.
+\end{cases}$$
+
+\begin{proof}
+	Let $\alpha\in \F_q^\times$ be a primitive element, whose existence is assured by \textbf{Theorem 10.2}. The map: $\F_q \to \F_q : x\mapsto \alpha x$ is a bijection. Consequently we have\begin{align*}
+		\sum_{x\in \F_q}x^k &=\sum_{x\in \F_q}(\alpha x)^k=\alpha^k\sum_{x\in \F_q}x^k\\
+		\implies &(1-\alpha^k)\sum_{x\in \F_q}x^k=0
+	\end{align*}
+	Hence, $\displaystyle q-1 \nmid k \iff 1-\alpha^k\ne0\implies \sum_{x\in \F_q}x^k=0.$
+	
+	On the other hand, if $q-1 \mid k$, by Fermat's Little theorem, we have $x^{q-1}=1$ for all $x\in \F_q^\times$, which implies $x^k=1$ for all $x\in\F_q^\times$, which in turn implies $\displaystyle \sum_{x\in \F_q}x^k=\sum_{x\in \F_q^\times}1=(q-1)\mod p=-1$.
+\end{proof}
+
+
+\pagebreak
+
+\prob3 Let $p$ be a prime divisor of $n^3 -3n - 1$ for some integer $n$. Prove that $p = 3$ or $p\equiv \pm1\pmod{9}$.
+
+\begin{proof}
+	We have some $n\in\F_p$ such that $n^3-3n-1=0$. Let $\alpha\in\F_{p^2}$ be a root of $x^2-nx+1$. Then $\alpha\ne 0$ and $n=\alpha+\alpha^{-1 }$. Now\begin{align*}
+		0 &= (\alpha+\alpha^{-1})^3-3(\alpha+\alpha^{-1})-1\\
+		 &=\alpha^3-1 + \alpha^{-3}\tag{1}\\
+		(1)\times \alpha^3&\implies
+		 	0 =\alpha^6-\alpha^3+1\tag{2}\\
+		(2)\times \alpha^3 &\implies 	0 =\alpha^9-\alpha^6+\alpha^3\tag{3} \\
+		(2)+(3) & \implies \alpha^9=-1\tag{4}\\
+		&\implies \alpha^{18}=1
+	\end{align*}
+We have $o(\alpha)\nmid 9$ and $o(\alpha)\mid 18$. Let $A$ denote the set of possible $o(\alpha)$. We have $1,3,9\notin A$ as they divide $9$ which is not $o(\alpha)$. We are left with $\{2,6,18\}$. Let's examine them one by one.
+\begin{itemize}
+	\item When $o(\alpha)=2$. By $\alpha^2=1$ and $\alpha^9=-1$, we have $\alpha=-1\implies \alpha^3=-1$. Plug $\alpha^6=1$ and $\alpha^3=-1$ into (2), we get $0=3$. This has to mean that the characteristic of $F_{p^2}$, $p$, is $3$;
+	\item When $o(\alpha)=6$, we have $\alpha^6=1$ and $\alpha^9=-1$, hence $\alpha^3=-1$. This is the same as the above case, so again we have $p=3$;
+	\item When $(\alpha)=18$. We have $18 \mid p^2-1$. In the mean time, we obviously have $2\nmid n^3-3n-1$, so $p^2-1$ is even. Consequently $18\mid p^2-1\iff 9\mid p^2-1\implies \exists_{k\in\Z}(9k=p^2-1)\implies 0\equiv p^2-1 \pmod{9}\implies p^2\equiv 1\pmod{9}\implies p=\pm 1\pmod{9}$. 
+\end{itemize}
+
+In conclusion, we have $p=3$ or $p\equiv\pm1\pmod{9}$.
+
+\end{proof}
+
+\pagebreak
+
+\prob4 Let $F$ be a finite field of size $q$.
+\begin{enumerate}[(a)]
+    \item Prove that if $q$ is odd, then the set $\{x^2\colon x\in F\}$ of quadratic residues has size $(q+1)/2$.
+    \begin{proof}
+    	Denote $Q= \{x^2\colon x\in F\}$.
+    	
+    	Let $\alpha$ be a primitive element in $F^\times$. We claim $\alpha\notin Q$. Suppose for a contradiction there exists some positive integer $k$ such that $\alpha = \alpha^{2k}$, then we have $\alpha^{2k-1}=1$. In the mean time , we have $\alpha^{q-1}=1$, by \textbf{Theorem 10.2}. By the minimality of $q-1$, we must have $q-1 \mid 2k-1$. This is impossible, no even number will ever divides an odd one.
+    	
+    	We further assert that $\alpha\in Q \iff \alpha^{2k+1}\in Q$. If $\alpha\in Q$, then there exists an integer $m$ such that $\alpha=\alpha^{2m}$. So $\alpha^{2k+1}=\alpha^{2(k+m)}\in Q$. Conversely, $\alpha^{2k+1}\in Q\implies \exists_{m\in Z}\paren{\alpha^{2k+1}=\alpha^{2m}}\implies \exists_{m\in Z}\paren{\alpha=\alpha^{2(m-k)}}$.
+    	
+    	We have proved that all odd powers of $\alpha$ are not elements of $Q$. There are $(q-1)/2$ such elements. The rest elements in $F$, namely $0$ and even powers of $\alpha$, obviously are elements of $Q$. So $|Q|=q-(q-1)/2=(q+1)/2$
+    	
+    \end{proof}
+    \item  Prove that if $q$ is even, then $\{x^2\colon x\in F\} = F.$
+   	\begin{proof}
+   		Like in (a), it suffices to prove $\alpha = \alpha^{2k}$ from some $k\in \N$, with $\alpha$ a primitive element. Indeed we have $\alpha = \alpha^q$, with $q$ even.
+   		
+   	\end{proof}
+    \item Prove that for any $c\in F$, and any $a,b\in F^\times$, there exist $x,y\in F$ such that $ax^2 + by^2 = c$.
+	\begin{proof}
+		From (a) and (b), we conclude $|Q|>|F|/2$.
+		
+		Let $A = \{ax^2: x\in F\}, B=\{c-by^2: y\in F\}$, we have $|A|=|B|=|Q|$ as the map: $Q\to A: x\mapsto ax^2$ and the map: $Q\to B: y\mapsto c-by^2$ are clearly bijiections. We assert $A\cap B\ne \emptyset$. Indeed,  suppose for a contradiction that $A$ and $B$ are disjoint. Then we have $|A\cup B|=|A|+|B|>|F|$. On the other hand, we have $A, B\subseteq F$, hence $|A\cup B|\le |F|$. A contradiction.
+		
+		Let $e\in A\cap B$. As $e\in A$, we have $e=ax^2$ for some $x\in F$; on the other hand, $e\in B\implies e=c-by^2$ for some $y\in F$. So we have $ax^2=c-by^2$ for some $x,y\in F\implies \exists_{x,y\in F}(ax^2+by^2=c)$. 
+	\end{proof}
+
+\end{enumerate}
+
+\pagebreak
+
+\prob5 Let $p$ be a prime and let $a\in\F_p$ be nonzero. Prove that the polynomial $f(x) = x^p - x + a\in\F_p[x]$ is irreducible.
+\begin{proof}
+	Let $\alpha$ be a root of $f(x)$. We obviously have $\alpha\notin \F_p$ as, for each $b\in\F_p$, we have $f(b)=b^p-b+a=a\ne 0$. In the mean time, the existence of $\alpha$ is guaranteed by \textbf{Corollary 10.8}, in $\F_{p^p}, \F_{p^{2p}}, \cdots$.
+	
+	We have $\alpha^p-\alpha+a=0$. We claim if $k\in \F_p$, then $\alpha+k$ is a root of $f(x)$. Indeed,\begin{align*}
+		f(\alpha+k) &= (\alpha+k)^p-(\alpha+k)+a\\
+			&=\alpha^p+k^p-\alpha-k+a\\
+			&=\alpha^p+k-\alpha-k+a\\
+			&=\alpha^p-\alpha+a=0
+	\end{align*}
+
+	So $\{\alpha+k: k\in\F_p\}$ is the set of roots of $f(x)$. Hence each $(x-\alpha-k)$ is a factor of $f(x)$. Now let a monic polynomial $g(x)$ with degree $1\le n <p$ be a factor of $f(x)$ , then we must have $g(x)=(x-\alpha-k_1)\cdots(x-\alpha-k_n)$, for some set of $\{k_1,\cdots,k_n\}\subset \F_p$. It suffices to show $g(x)\notin \F_p[x]$. We only need to examine the coefficient of $x^{n-1}$ in the expanded form of $g(x)$, which must be $$c:=\displaystyle -\sum_{i\in\{1,\cdots,n\}}(\alpha+k_i)=-n\alpha-\sum_{i\in\{1,\cdots,n\}}k_i.$$
+	
+	We claim $n\alpha\notin \F_p$. Suppose for a contradiction $n\alpha\in\F_p$. Then we have $p\alpha=0\in\F_p$ and $n\alpha\in\F_p$. If $n=1$, we have $\alpha\in\F_p$, a contradiction. If $n\ne 1$, let $r=p \mod n$, we must have $r\alpha\in\F_p$. This Euclidean algorithm process will eventually bring us to $\gcd(n,p)\alpha = \alpha\in\F_p$, a contradiction.
+	
+	In conclusion: $n\alpha\notin \F_p\implies c\notin\F_p\implies g(x)\notin\F_p[x]\implies f(x) \text{ is irreducible in }\F_p[x]$.
+\end{proof}
+
+
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

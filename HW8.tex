@@ -1,0 +1,181 @@
+\documentclass[12pt,letterpaper]{article}
+
+%\usepackage{url}
+\usepackage{fancyhdr,fancybox,comment,stmaryrd}
+\usepackage{amstext}
+\usepackage{amsmath,amssymb,xcolor,enumerate}
+\usepackage{rotating}
+%\usepackage{multicol}
+%\usepackage{pictexwd,pictexplus}
+\usepackage{pictexwd}
+\setlength{\parindent}{3pc}
+
+
+\setlength{\textwidth}{7in}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\parskip}{.3\baselineskip}
+\setlength{\topmargin}{-1.0in}
+%\setlength{\topmargin}{-0.2in}
+%\setlength{\topmargin}{-0in}
+\setlength{\textheight}{9.5in}
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\add}[1]{{\color{blue} #1}}
+\newcommand{\alert}[1]{{\color{red} #1}}
+\newcommand{\pnt}[1]{\textbf{[#1]}}
+\newcommand{\q}{\pnt{5} }
+\newcommand{\hint}[1]{\noindent{\color{purple} Hint: #1}}
+\renewcommand{\mark}[1]{\noindent{\color{red} #1}}
+\newcommand{\tot}[2]{\noindent\textsc{\footnotesize This homework is marked out of \textbf{#1} and graded out of \textbf{#2}}.}
+\newcommand{\ttt}{\tot{25}{20}}
+\renewcommand{\lg}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\leg}[2]{\left(\frac{#1}{#2}\right)}
+\def\R{{\mathbb R}}
+\def\Z{{\mathbb Z}}
+\def\N{{\mathbb N}}
+\def\Q{{\mathbb Q}}
+\def\C{{\mathbb C}}
+\def\F{{\mathbb F}}
+\def\lcm{{\rm lcm}}
+\def\prob#1{\vskip13pt\noindent\llap{{\bf #1:\ }}}
+\font\Bigrm=cmr12 scaled\magstep1
+
+%               Problem and Part
+\newcounter{problemnumber}
+\newcounter{partnumber}
+\newcommand{\Problem}{\stepcounter{problemnumber}\setcounter{partnumber}{0}\item[\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}]}
+\newcommand{\InProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{1.9in}{#1}}
+\newcommand{\InBigProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{2.75in}{#1}}
+\newcommand{\Part}{\stepcounter{partnumber}\item[(\alph{partnumber})]}
+\newcommand{\InPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{2.25in}{#1}}
+\newcommand{\InSmallPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{1.25in}{#1}}
+
+%% For Answerbox:
+\newcounter{answernumber}
+\newcommand{\Ans}{%
+  \stepcounter{answernumber}
+  \fbox{\parbox{.18in}{\hfil\theanswernumber\hfil}}
+}
+
+
+
+\pagestyle{empty}
+
+\begin{document}
+%\thispagestyle{fancy}
+%%
+\noindent{\Bigrm HW 8 due Friday November 10}
+
+%\ttt
+
+\prob1\pnt{4} Suppose for any coprime positive integers $a,m$, there exists a prime $p\equiv a\pmod{m}$. Prove that for any coprime positive integers $a,m$, there exists infinitely many primes $p\equiv a\pmod{m}$.
+
+\hint{When you prove the existence of infinitely many primes for one fixed $a$ and $m$, you can use the existence of one prime for different $a$ and $m$.}
+
+
+\vspace{5pt}
+
+\prob2\q Let $F$ be a field and let $f(x)\in F[x]$ be a polynomial. 
+\begin{enumerate}[(a)]
+    \item\pnt{4} Prove that there exists a field extension $E/F$ of finite degree where $f(x)$ splits completely, i.e. $f(x)$ factors as a product of linear polynomials in~$E[x]$.
+
+    \hint{Can you find a field extension of finite degree where $f(x)$ has one root?}
+    \item\pnt{1} Suppose $f(x)$ factors as $a_0(x - \alpha_1)\cdots(x - \alpha_n)$ in $E[x]$ where $a_0\in F$ and $\alpha_1,\ldots,\alpha_n\in E$. Prove that the smallest subring of $E$ containing $F$ and $\alpha_1,\ldots,\alpha_n$, denoted $F[\alpha_1,\ldots,\alpha_n]$, is a subfield of $E$.
+
+    \hint{Prove by induction on $n$ that if $\alpha_1,\ldots,\alpha_n$ are algebraic over $F$, then $F[\alpha_1,\ldots,\alpha_n]$ is a field.}
+\end{enumerate}
+
+\noindent The smallest subfield of $E$ containing $F$ and all the roots of $f(x)$ is said to be a \textbf{splitting field} of~$f(x)$. 
+
+
+
+\vspace{5pt}
+
+\prob3\pnt{6} Let $F$ be a field. An irreducible polynomial $f(x)\in F[x]$ is said to be \textbf{separable} if it has no repeated root in any field extension $E$ of $F$.
+\begin{enumerate}[(a)]
+    \item \pnt{2} Prove that an irreducible polynomial $f(x)$ is separable if and only if $f'(x)\neq 0$.
+
+    \hint{Suppose $\alpha\in E$ is a repeated root of $f(x)$. Can you find a common factor of $f(x)$ and $f'(x)$ in $E[x]$? Can you find a common factor of $f(x)$ and $f'(x)$ in $F[x]$?}
+    \item \pnt{2} Prove that if $F$ is a finite field or if $F$ has characteristic $0$, then every irreducible polynomial is separable. Such a field is said to be \textbf{perfect}.
+
+    \hint{Every element in a finite field of characteristic $p$ is a $p$-th power.}
+    \item \pnt{2} Suppose $F = \F_p(t)$ is the field of rational functions in $t$. Let $E = F[x]/(x^p - t).$ Prove that $x^p - t$ is irreducible in $F[x]$ and that $\text{Aut}_F(E)$ consists of only the identity map.
+\end{enumerate}
+A finite extension where the minimal polynomial of any element is separable is a \textbf{separable extension}. Part (c) gives a reason for this name: it is where the automorphisms can separate elements of $E$.
+
+\vspace{5pt}
+
+\prob4\q Let $\varphi:F_1\rightarrow F_2$ be an isomorphism of fields and denote also by $\varphi$ its natural extension to a ring isomorphism $F_1[x]\rightarrow F_2[x]$. Let $f_1(x)\in F_1[x]$ be irreducible and let $f_2(x) = \varphi(f_1(x)).$ Let $E_1$ be a splitting field of $f_1(x)$ over $F_1$ and let $E_2$ be a splitting field of $f_2(x)$ over $F_2$. Prove that $\varphi$ extends to a field isomorphism $\psi:E_1\rightarrow E_2$. (Here ``extends'' means that for any $\alpha\in F_1$, we have $\psi(\alpha) = \varphi(\alpha)$.)
+
+\hint{Keep calm and induct on the degree of $f_1(x)$. Let $\alpha\in E_1$ be a root of $f_1(x)$. Let $\beta\in E_2$ be a root of $f_2(x)$. Extend $\varphi$ first to an isomorphism $\varphi_1:F_1[\alpha]\rightarrow F_2[\beta].$ Can you find a polynomial $g_1(x)\in F_1[\alpha][x]$ of degree less than $\deg(f)$ such that $E_1$ is a splitting field of $g_1(x)$ over $F_1[\alpha]$?}
+
+\noindent If we take $F_2 = F_1$ and $\varphi$ to be the identity map, then this proves that any two splitting fields of $f(x)$ are isomorphic via an isomorphism that fixes $F_1$. As a result, we usually speak of ``the'' splitting field of $f(x)$. This gives another proof that any two fields of order $p^n$ are isomorphic as they are both splitting fields of $x^{p^n} - x$ over $\F_p$.
+
+
+
+\vspace{5pt}
+
+\prob5\q Let $F$ be a field and let $E$ be a finite extension of $F$. We say the extension $E/F$ is \textbf{normal} if $E$ is a splitting field of some $f(x)\in F[x]$. Prove that if $g(x)\in F[x]$ is irreducible and has a root in a normal extension $E/F$, then $g(x)$ splits completely in $E$.
+
+\hint{Let $\alpha$ be a root of $g(x)$ in $E$ and let $\beta$ be any root of $g(x)$ in a splitting field $E'$ of $g(x)$. Write down an isomorphism $F[\alpha]\rightarrow F[\beta]$ fixing $F$ and extend this to an isomorphism $E[\alpha]\rightarrow E[\beta]$ using Problem 4. Use to conclude $[E[\alpha]:F] = [E[\beta]:F].$}
+
+\vspace{5pt}
+
+\vspace{50pt}
+\hrule
+\begin{center}
+    A note on Galois theory
+\end{center}
+
+We can be more precise in Problem 4 to prove by induction that there are $[E_1:F_1]$ possible choices for $\psi:E_1\rightarrow E_2$ if $f_1(x)$ is separable. Indeed, following the given hint, after extending $\varphi$ to $\varphi_1:F_1[\alpha]\rightarrow F_2[\beta]$, there are then $[E_1:F_1[\alpha]]$ ways to extend it to $E_1$ by induction. Extending $\varphi$ to $\varphi_1$ on $F_1[\alpha]$ amounts to finding a root $\beta$ of $f_2$, and there are $\deg(f_2)=\deg(f_1)$ of them since $f_1$ and so $f_2$ are separable. Hence the total number of extensions is 
+$$\deg(f_1)\cdot[E_1:F_1[\alpha]] = [F_1[\alpha]:F_1]\cdot[E_1:F_1[\alpha]] = [E_1:F_1].$$
+
+We say an arbitrary polynomial (not necessarily irreducible) in $F[x]$ is \textbf{separable} if all of its irreducible factors are separable. Problem 4 and the above counting argument can be generalized to all separable polynomials, by starting the induction with some irreducible factor of $f_1(x)$.
+If we apply these result to the identity map, we obtain:
+
+\noindent\textbf{Theorem 1}.
+    \emph{Let $F$ be a field and let $f(x)\in F[x]$ be a separable polynomial. Let $E$ be a splitting field of $f(x)$ over $F$. Then $|\text{Aut}_F(E)| = [E:F].$}
+
+We say a finite extension $E/F$ is \textbf{Galois} if it is a splitting field of a separable polynomial $f(x)\in F[x]$. Note that if $L$ is a subfield of $E$ containing $F$, then $E$ is also a splitting field of $f(x)$ over $L$ and $f(x)$ is separable over $L$. So $E/L$ is also Galois. The extension $L/F$ is not necessarily Galois. The automorphism group $\text{Aut}_F(E)$ is called the Galois group, denoted $\text{Gal}(E/F)$. For any subgroup $H$ of $\text{Gal}(E/F)$, recall the fixed field
+$$E^H = \{\alpha\in E\colon \sigma(\alpha) = \alpha,\forall \sigma\in H\}.$$
+
+\noindent\textbf{Theorem 2}.
+    \emph{Let $F$ be a field and let $f(x)\in F[x]$ be a separable polynomial. Let $E$ be a splitting field of $f(x)$ over $F$. Let $G = \text{Gal}(E/F)$. Then $E^G = F$. In particular, for any intermediate field $F\subseteq L\subseteq E$, we have $$E^{\text{Gal}(E/L)} = L.$$}
+
+\noindent\textbf{Proof}: The key observation is that since every $\sigma\in G$ fixes $E^G$, we have $G \subseteq \text{Gal}(E/E^G).$ Since by definition $F\subseteq E^G$ and $E/E^G$ is Galois, we have by Theorem 1,
+$$[E:F] = |G| \leq |\text{Gal}(E/E^G)| = [E:E^G] \leq [E:F].$$
+So everything is equal and we have $F = E^G$. $\Box$
+
+The other equality where we start with a subgroup of the Galois group needs a bit of linear algebra.
+
+\noindent\textbf{Theorem 3}.
+    \emph{Let $F$ be a field and let $f(x)\in F[x]$ be a separable polynomial. Let $E$ be a splitting field of $f(x)$ over $F$. Let $H$ be a subgroup of $\text{Gal}(E/F)$. Then$$H = \text{Gal}(E/E^H).$$}
+
+\noindent\textbf{Proof}: Since we have $H \subseteq \text{Gal}(E/E^H)$ by definition, we have
+$$|H| \leq |\text{Gal}(E/E^H)| = [E:E^H].$$
+Suppose for a contradiction that $[E:E^H] > |H| =: n$. Let $\beta_1,\ldots,\beta_{n+1}\in E$ be linearly independent over $E^H$. Consider the following system of $n$ linear equations in $n+1$ unknowns in $E$:
+$$\sigma(\beta_1)x_1 + \cdots + \sigma(\beta_{n+1})x_{n+1} = 0,\qquad \sigma\in H.$$
+Since nonzero solutions $(x_1,\ldots,x_{n+1})\in E^{n+1}$ exist, we take one with the smallest number of nonzero entries. Without loss of generality, suppose $x_1,\ldots,x_r\in E$ are nonzero and $x_{r+1} = \cdots = x_{n+1} = 0$. Since $\sigma(\beta_1)\neq 0$, we see that $r\geq 2$. We now construct a solution with fewer nonzero entries, contradicting minimality of $r$. By scaling, we may assume $x_r = 1$. By taking $\sigma = 1$, we get $\beta_1x_1 + \cdots + \beta_rx_r = 0$. Since $\beta_1,\ldots,\beta_r$ are linearly independent over $E^H$, we see that not all $x_1,\ldots,x_r$ are in $E^H$. Without loss of generality, assume $x_1\notin E^H$. Let $\varphi\in H$ such that $\varphi(x_1)\neq x_1$. Then we have
+$$\varphi\sigma(\beta_1)\varphi(x_1) + \cdots + \varphi\sigma(\beta_r)\varphi(x_r) = 0,\qquad \sigma\in H.$$
+Since $\varphi\sigma$ takes all elements in $H$ as $\sigma$ varies in $H$, we have
+$$\sigma(\beta_1)\varphi(x_1) + \cdots + \sigma(\beta_r)\varphi(x_r) = 0,\qquad \sigma\in H.$$
+Hence $(\varphi(x_1)-x_1,\ldots,\varphi(x_r) - x_r,0,\ldots,0)$ is a solution. It is nonzero because $\varphi(x_1)\neq x_1$. It has fewer nonzero entries because $x_r = 1$ and so $\varphi(x_r) - x_r = 0.$ $\Box$
+
+We have now proved the fundamental correspondence theorem of Galois theory:
+
+\noindent\textbf{Theorem 4}.
+    \emph{Let $E/F$ be a finite Galois extension. Then there is a bijection:
+    \begin{eqnarray*}
+    \{\text{Subgroups of }\text{Gal}(E/F)\}&\longleftrightarrow&\{\text{Intermediate fields of }E/F\}\\
+    H&\longmapsto& E^H\\
+    \text{Gal}(E/L)&\longmapsfrom& L.
+\end{eqnarray*}
+The above two maps are inverses of each other.}
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,228 @@
+\documentclass[12pt,letterpaper]{article}
+
+%\usepackage{url}
+\usepackage{fancyhdr,fancybox,comment}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{amsmath,amssymb,xcolor,enumerate}
+\usepackage{rotating}
+%\usepackage{multicol}
+%\usepackage{pictexwd,pictexplus}
+\usepackage{pictexwd}
+
+
+
+\setlength{\textwidth}{7in}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\parskip}{.3\baselineskip}
+\setlength{\topmargin}{-1.0in}
+%\setlength{\topmargin}{-0.2in}
+%\setlength{\topmargin}{-0in}
+\setlength{\textheight}{9.5in}
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\add}[1]{{\color{blue} #1}}
+\newcommand{\alert}[1]{{\color{red} #1}}
+\newcommand{\pnt}[1]{\textbf{[#1]}}
+\newcommand{\q}{\pnt{5} }
+\newcommand{\hint}[1]{\noindent{\color{purple} Hint: #1}}
+\renewcommand{\mark}[1]{\noindent{\color{red} #1}}
+\newcommand{\tot}[2]{\noindent\textsc{\footnotesize This homework is marked out of \textbf{#1} and graded out of \textbf{#2}}.}
+\def\R{{\mathbb R}}
+\def\Z{{\mathbb Z}}
+\def\N{{\mathbb N}}
+\def\Q{{\mathbb Q}}
+\def\C{{\mathbb C}}
+\def\F{{\mathbb F}}
+\def\lcm{{\rm lcm}}
+\def\prob#1{\vskip13pt\noindent\llap{{\bf #1:\ }}}
+\font\Bigrm=cmr12 scaled\magstep1
+\newtheorem{lemma}{Lemma}
+
+%               Problem and Part
+\newcounter{problemnumber}
+\newcounter{partnumber}
+\newcommand{\Problem}{\stepcounter{problemnumber}\setcounter{partnumber}{0}\item[\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}]}
+\newcommand{\InProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{1.9in}{#1}}
+\newcommand{\InBigProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{2.75in}{#1}}
+\newcommand{\Part}{\stepcounter{partnumber}\item[(\alph{partnumber})]}
+\newcommand{\InPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{2.25in}{#1}}
+\newcommand{\InSmallPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{1.25in}{#1}}
+
+%% For Answerbox:
+\newcounter{answernumber}
+\newcommand{\Ans}{%
+  \stepcounter{answernumber}
+  \fbox{\parbox{.18in}{\hfil\theanswernumber\hfil}}
+}
+
+\newcommand{\lparen}[1]{\large(#1\large)}
+
+
+\pagestyle{empty}
+
+\begin{document}
+%\thispagestyle{fancy}
+%%
+\noindent{\Bigrm HW 5 due Friday October 20}
+
+%\tot{25}{20}
+
+\prob1 Let $F$ be a field. 
+\begin{enumerate}[(a)]
+        \item \pnt{3} Suppose $f(x)\in F[x]$ is irreducible. If $f(x)\mid a(x)b(x)$ in $F[x]$, then $f(x)\mid a(x)$ or $f(x)\mid b(x)$.
+
+		\begin{proof}
+			\begin{lemma}\label{hw5:1}
+				Let $R$ be a commutative ring. Let $a_1,\cdots, a_n\in R$ and $I$ be an ideal of R. Then\[
+				\forall_{i\in\{1,\cdots,n\}}(a_i\in I)\implies (a_1,\cdots,a_n) \subseteq I
+				\]
+				
+				\begin{proof}
+					$(a_1,\cdots,a_n)=a_1R+\cdots+a_nR$ by definition. If all of $a_1,\cdots, a_n\in I$, then for any $b_1,\cdots,b_n\in R$, we have $a_1b_1+\cdots+a_nb_n\in I$. This is equivalent to $(a_1,\cdots,a_n) \subseteq I$.
+				\end{proof}
+			\end{lemma}
+			\begin{lemma}\label{hw5:2}
+				Let $R$ be a commutative ring. Let $a,b\in R$ such that $a\mid b$. We have $\lparen{a,b}=\lparen{a}$.
+				
+				\begin{proof}
+				We aim to show that \begin{enumerate}[(i)]
+					\item $(a) \subseteq (a,b)$, and
+					\item $(a,b)\subseteq (a)$
+				\end{enumerate}
+For (i), by \textbf{Lemma~\ref{hw5:1}}, we only need to show $a\in (a,b)$. This is obviously true as $a\in(a)\subseteq(a,c)$ with $c$ any element in $R$.
+
+For (ii), we have $a\in(a)$, by \textbf{Lemma~\ref{hw5:1}}, it suffices to show $b\in (a)$. Jerry says \textbf{$\bf{b\in(a)}$ if and only if $\bf{a\mid b}$}. So we are done.			
+					
+				\end{proof}
+			\end{lemma}
+			\begin{lemma}\label{hw5:3}
+				Let $f(x),g(x),q(x),r(x)\in F[x]$ with $f(x)=g(x)q(x)+r(x)$. Then\[
+				\lparen{f(x),g(x)} = \lparen{g(x),r(x)}.
+				\]
+				\begin{proof}
+					By \textbf{Lemma~\ref{hw5:1}}, it suffices to prove $f(x)\in \lparen{g(x),r(x)}$ and $r(x)\in \lparen{f(x),g(x)}$. The former follows naturally from the fact that $g(x)$ and $r(x)$ are both in $\lparen{g(x),r(x)}$ while $f(x)=g(x)q(x)+r(x)$. The latter, $f(x),g(x)\in \lparen{f(x),g(x)}$ with $r(x)=f(x)-g(x)q(x)$, which implies $r(x)\in \lparen{f(x),g(x)}$.
+				\end{proof}
+			\end{lemma}
+		
+			\begin{lemma}
+				Let $f(x)\in F[x]$ be irreducible. Let $g(x)\in F[x]$ such that $f(x)\nmid g(x)$. Then\[ I:=\lparen{f(x), g(x)}=(1).\]
+				%\[
+				%	I:=\large(f(x),g(x)\large)=\begin{cases}
+				%		(1) &\text{if } f(x)\nmid g(x), \\
+				%		\large(f(x)\large) &\text{if } f(x)\mid g(x).
+				%	\end{cases}
+				%\]
+				\begin{proof}					
+					It suffices to show $I=(c)$ for some non-zero constant polynomial $c$. As $c\ne 0\in F$, $c$ is a unit, so $1=cc^{-1}$ is in $(c)$ and $I$ is the full ring, the same as $(1)$.
+					
+					We first prove it for the case $\deg(g)\le \deg(f)$. We induct on $\deg(g)$.
+					
+					If $\deg(g)=0$, we are done, as $g(x)=c\ne 0$. Note $g(x)=0\implies f(x)\mid g(x)$.
+					
+					Suppose we have proved that $I=(1)$ for all polynomials with degree $i, 0\le i<\deg(f)$. $h(x)\in F[x]$ is any polynomials with degree $i+1$ such that $f(x)\nmid h(x)$. We have $f(x)=q(x)h(x)+r(x)$ for some $q(x),r(x)\in F[x]$ with $\deg(r)<\deg(h)$. By \textbf{Lemma~\ref{hw5:3}}, we have $I=\lparen{f(x),r(x)}$. Notice $r(x)\ne 0$ because of the irreducibility of $f(x)$. And $\deg(r)<\deg(h)<=i$. By our induction hypothesis, we have $I=\lparen{f(x),r(x)}=(1)$.
+					
+					 Suppose $\deg\lparen{g}\ge \deg(f)$. By the division algorithm for polynomials, there is $q(x),r(x)\in F[x]$ such that\[
+					f(x)=g(x)q(x)+r(x) \land \deg(r)<\deg(g).\]
+					By \textbf{Lemma~\ref{hw5:3}}, we have $\lparen{f(x),g(x)}=\lparen{f(x),r(x)}$. Further, we have $r(x)\ne 0$, otherwise $g(x)\mid f(x)$, contradictory with the irreducibility of $f(x)$.				 
+				\end{proof}					
+			\end{lemma}
+			\begin{lemma}[Counterpart of Proposition 1.10 for integers]\label{hw5:4}
+				Let $R$ be a commutative ring. Let $a,b,c\in R$ such that $(a,c)=(1)$. Then $(c,ab)=(c,b)$. In particular,\[
+					c \mid ab \iff (c,ab)=(c)\iff (c,b)=(c) \iff c \mid b.
+				\]
+			\end{lemma}
+		
+			\begin{lemma}
+				content...
+			\end{lemma}
+		If $f(x)\mid a(x)$, we are done. Suppose $f(x)\nmid a(x)$, to prove $f(x)\mid b(x)$, by Lemma~\ref{hw5:1}, it suffices to prove $\large(f(x),a(x)b(x)\large)=\large(f(x)\large)$. We obviously have $f(x)\in \large(f(x)\large))$, it remains to show $a(x)b(x)\in \large( f(x)\large)$, this is equivalent to say there is a $c(x)\in F[x]$ such that $c(x)f(x)=a(x)b(x)$, which is implies by $f(x)\mid a(x)b(x)$. We are done.
+		\end{proof}
+
+        \item \pnt{1} Every non-constant polynomial in $F[x]$ can be factored into a product of irreducible polynomials in $F[x]$.
+        
+        \begin{proof}
+        	Let $f(x)\in F[x]$. We induct on the degree of $f(x)$. If $\deg\lparen{f(x)}=1$, by \textbf{Corollary 9.6}, $f(x)$ is irreducible, which can be regarded as a product of a single irreducible polynomial.
+        	
+        	Suppose for an integer $i\ge 1$, we have proved that all polynomials of degree less than or equal to $i$ can be factored into a product of irreducible polynomials in $F(x)$. Now consider a polynomial $f(x)$ such that $\deg\lparen{f(x)}=i+1$. If it's irreducible, it's already of a product of a single irreducible polynomial; otherwise, by definition, there exist polynomials $h(x), g(x)\in F[x]$ of degree at least $1$  such that $f(x)=g(x)h(x)$. As $\deg\lparen{f(x)}=\deg\lparen{g(x)}+\deg\lparen{h(x)}$ and $\deg\lparen{h(x)}\ge 1,\deg\lparen{g(x)}\ge 1$, we have $ 1\ge \deg\lparen{g(x)},\deg\lparen{h(x)} \le i$, by our induction hypothesis, each of $h(x)$ and $g(x)$ can be factored into a product of irreducible polynomials in $F[x]$. Consequently $f(x)$ can be factored into a product of irreducible polynomials in $F[x]$.
+        	
+        	By induction, all polynomial $f(x)\in F[x]$ with degree at least $1$ can be factored into a product of irreducible polynomials in $F[x]$. 
+        \end{proof}
+
+    \end{enumerate}
+
+\vspace{5pt}
+
+\prob2 Prove that $n\mid\phi(a^n - 1)$ for any positive integers $a,n$.
+\begin{proof}
+	\mark {page 17 of lecture notes: We define the \textbf{order} of an integer $n$ mod $m$, where $\gcd(n,m)=1$, denoted $o_m(n)$, to be the smallest positive integer $d$ such that $n^d\equiv 1 \pmod{m}$.}
+
+	When $a=1$, we define $\phi(0)=0$ as the number of positive integer less than or equal to $0$ is $0$. We obviously have $n \mid \phi(1^n-1)=\phi(0)=0$.
+	
+	If $n=1$, we obviously have $n\mid \phi(a^n-1)$. 	
+	
+	We now consider the case when $a\ge 2$ and $n\ge 2$. 
+	
+	We aim to show $o_{a^n-1}(a)= n$. Notice $a^n\equiv 1 \pmod{a^n-1}$, as is/does any integer $a$ greater than $2$ mod $a-1$. It suffices to prove for all positive integer $k$, with $1<=k<=n-1, a^k \mod a^n-1 \ne 1$. This is true as
+	
+	\[ 1<a<a^2<\cdots<a^{n-1}<a^{n-1}+(a-1)a^{n-1}-1=a^n-1,\]
+	so $a^k \mod a^n-1 = a^k>1$. We have demonstrated that $n$ is the smallest positive integer such that $a^n\equiv 1 \pmod{a^n-1}$, by definition, we have $o_{a^n-1}(a)= n$.	
+	
+	Notice $\gcd(a,a^n-1)=1$, by \textbf{Corollary 8.8 (Euler's Theorem)}, we have $a^{\phi(a^n-1)}\equiv 1 \pmod{a^n-1}$.
+	
+	Consequently $n\mid \phi(a^n-1)$ because otherwise there will be an integer $r=\phi(a^n-1) \mod n$ with $ 0<r<n$ such that $a^r\equiv 1\pmod{a^n-1}$, contradictory to the minimality of $o_{a^n-1}(a)=n$.
+\end{proof}
+
+
+\vspace{5pt}
+
+\prob3\q Let $R$ be a finite commutative ring with $p^2$ elements, where $p$ is a prime. Suppose $R$ is not a field. Prove that $R\cong\Z/p^2\Z$ or $\F_p[x]/(x^2)$ or $\F_p\times\F_p$.
+
+\hint{If $R$ has characteristic $p$, then the prime subring of $R$ is $\F_p$. Take some $\alpha\in R\backslash\F_p$ and consider the evaluation map $\text{ev}_\alpha:\F_p[x]\rightarrow R$.}
+
+\vspace{5pt}
+
+\prob4\q Let $R$ be a finite commutative ring with $n$ elements. Let $p\mid n$ be a prime. Let $R^{\F_p}$ denote the set of functions from $\F_p$ to $R$. For any $r\in R$, define the set $$S(r) = \{f\in R^{\F_p}\colon \sum_{a\in\F_p}f(a) = f(0) + f(1) + \cdots + f(p-1) = r\}.$$
+For $f,g\in S(r)$, we say $f\sim g$ if and only if there exists $a\in\F_p$ such that $$f(x) = g(x+a)\qquad\mbox{for every }x\in\F_p.$$
+\begin{enumerate}[(a)]
+    \item \pnt{1} Prove that $\sim$ defines an equivalence relation on $S(r)$. (See the paragraph after the proof of Corollary 8.2 for the definition of an equivalence relation.)
+    \item \pnt{2} Prove that each equivalence class in $S(r)$ has size $p$ or $1$.
+
+    \hint{For any $f\in S(r)$, the equivalence class $[f]$ consists of all functions of the from $h(x)= f(x + a)$ for some $a\in \F_p$.}
+    \item \pnt{2} Prove that $R$ has an element $a$ with $o_+(a) = p$.
+
+    \hint{Consider $S(0)$. What do equivalence classes of size $1$ look like? (You may use the fact that distinct equivalence classes are disjoint without proof.)}
+\end{enumerate}
+
+\vspace{5pt}
+
+\prob5\pnt{8} Let $R$ be a finite commutative ring with $n$ elements. Let $n = p_1^{a_1}\cdots p_r^{a_r}$ be the prime factorization of $n$ (so that $p_1,\ldots,p_r$ are distinct primes and $a_1,\ldots,a_r\geq 1$). For any prime $p\mid n$, let $$R[p^\infty]=\{\alpha\in R\colon \exists k\in\N, p^k\alpha = 0\}.$$ 
+\begin{enumerate}[(a)]
+    \item \pnt{2} Prove that there exist $e_1,\ldots,e_r\in R$ such that $e_i\in R[p_i^\infty]$ for any $i=1,\ldots,r$ and $1=e_1+\cdots+e_r$.
+
+    \hint{We don't have any real information about $R$. Try to find integers $e_i\in R[p_i^\infty]$ so that $\gcd(e_1,\ldots,e_r) = 1$.}
+    \item \pnt{2} Prove that for any $i =1,\ldots,r$, the above $e_i$ is an idempotent, that is $e_i^2 = e_i$.
+
+    \hint{What does $ab$ equal to if $a\in R[p_i^\infty]$ and $b\in R[p_j^\infty]$ for $i\neq j$? Use this to compute $e_ie_j$ for $i\neq j$.}
+    \item \pnt{2} Prove that for any $i =1,\ldots,r$, $|R/(e_i-1)|$ is a power of $p_i$.
+
+    \hint{In $R/(e_i-1)$, we have $r+(e_i-1) = re_i + (e_i-1)$. Prove that $p_i^{a_i}\alpha = 0$ in $R/(e_i-1)$ for every $\alpha\in R/(e_i-1)$. If $|R/(e_i-1)|$ has another prime divisor $q$, use Problem 4c) to find an element with additive order $q$.}
+    \item \pnt{2} Prove that $\displaystyle R\cong R/(e_1 - 1) \times R/(e_2-1)\times\cdots\times R/(e_r -1).$
+
+    \hint{Take the most natural map and prove that it works.}
+\end{enumerate}
+This implies that the size of a finite field can only have one prime divisor, and reduces the classification of finite commutative rings to the case of $p$-rings, which are rings whose sizes are powers of a prime $p$.
+
+
+
+
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

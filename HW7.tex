@@ -1,0 +1,142 @@
+\documentclass[12pt,letterpaper]{article}
+
+%\usepackage{url}
+\usepackage{fancyhdr,fancybox,comment}
+\usepackage{amstext}
+\usepackage{amsmath,amssymb,xcolor,enumerate}
+\usepackage{rotating}
+%\usepackage{multicol}
+%\usepackage{pictexwd,pictexplus}
+\usepackage{pictexwd}
+
+
+
+\setlength{\textwidth}{7in}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\parskip}{.3\baselineskip}
+\setlength{\topmargin}{-1.0in}
+%\setlength{\topmargin}{-0.2in}
+%\setlength{\topmargin}{-0in}
+\setlength{\textheight}{9.5in}
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\add}[1]{{\color{blue} #1}}
+\newcommand{\alert}[1]{{\color{red} #1}}
+\newcommand{\pnt}[1]{\textbf{[#1]}}
+\newcommand{\q}{\pnt{5} }
+\newcommand{\hint}[1]{\noindent{\color{purple} Hint: #1}}
+\renewcommand{\mark}[1]{\noindent{\color{red} #1}}
+\newcommand{\tot}[2]{\noindent\textsc{\footnotesize This homework is marked out of \textbf{#1} and graded out of \textbf{#2}}.}
+\newcommand{\ttt}{\tot{25}{20}}
+\renewcommand{\lg}[2]{\Big(\frac{#1}{#2}\Big)}
+\newcommand{\leg}[2]{\Big(\frac{#1}{#2}\Big)}
+\def\R{{\mathbb R}}
+\def\Z{{\mathbb Z}}
+\def\N{{\mathbb N}}
+\def\Q{{\mathbb Q}}
+\def\C{{\mathbb C}}
+\def\F{{\mathbb F}}
+\def\lcm{{\rm lcm}}
+\def\prob#1{\vskip13pt\noindent\llap{{\bf #1:\ }}}
+\font\Bigrm=cmr12 scaled\magstep1
+
+%               Problem and Part
+\newcounter{problemnumber}
+\newcounter{partnumber}
+\newcommand{\Problem}{\stepcounter{problemnumber}\setcounter{partnumber}{0}\item[\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}]}
+\newcommand{\InProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{1.9in}{#1}}
+\newcommand{\InBigProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{2.75in}{#1}}
+\newcommand{\Part}{\stepcounter{partnumber}\item[(\alph{partnumber})]}
+\newcommand{\InPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{2.25in}{#1}}
+\newcommand{\InSmallPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{1.25in}{#1}}
+
+%% For Answerbox:
+\newcounter{answernumber}
+\newcommand{\Ans}{%
+  \stepcounter{answernumber}
+  \fbox{\parbox{.18in}{\hfil\theanswernumber\hfil}}
+}
+
+
+
+\pagestyle{empty}
+
+\begin{document}
+%\thispagestyle{fancy}
+%%
+\noindent{\Bigrm HW 7 due Friday November 3}
+
+
+
+\prob1\pnt{7} Let $p$ be a prime such that the polynomial $x^3 + x + 1$ is irreducible in $\F_p[x]$. Then by HW6 Problem~1, the roots of $x^3 + x + 1$ in $\F_{p^3}$ are of the form $\alpha, \alpha^p, \alpha^{p^2}$ for some $\alpha\in\F_{p^3}$. Let $$\beta = (\alpha - \alpha^p)(\alpha - \alpha^{p^2})(\alpha^p - \alpha^{p^2}).$$
+    \begin{enumerate}[(a)]
+        \item\pnt{3} Prove that $\beta^2 = -31$.
+
+        \hint{Denote the three roots $a,b,c$ and let $f(x) = x^3 + x + 1$. How does $\beta^2$ relate to $f'(a)f'(b)f'(c)?$}
+        \item\pnt{1} Prove that $\beta\in\F_p$. 
+
+        \hint{Compare $\beta^p$ with $\beta$.}
+        \item\pnt{1} Let $q$ be a prime such that $x^3 + x + 1 \in \F_q[x]$ has a repeated root in $\F_q$. Prove that $q = 31$.
+
+        \hint{If $r\in\F_q$ is a repeated root, then $f(r) = f'(r) = 0$. Solve for $r$.}
+        \item\pnt{2} Prove that $(x^3 + x + 1)(x^2 + 31)$ has a root mod $m$ for every positive integer $m$.
+
+        \hint{Consider the case where $m = q$ is a prime first. Then the case $m = q^k$ using Hensel.}
+    \end{enumerate}
+
+\vspace{5pt}
+
+\prob2\q Define the Jacobi symbol $\displaystyle\lg{a}{b}$ where $b=p_1\cdots p_r$ is a product of (possibly equal) odd primes by
+$$\lg{a}{b} = \prod_{i=1}^r\lg{a}{p_i}.$$
+Prove the following laws of reciprocity:
+
+\hint{You may use the corresponding results for the Legendre symbol.}
+\begin{enumerate}[(a)]
+    \item \pnt{1} if $b$ is odd, then $\displaystyle\lg{-1}{b} = (-1)^{(b-1)/2};$
+    \item \pnt{2} if $b$ is odd, then $\displaystyle\lg{2}{b} = (-1)^{(b^2-1)/8};$
+    \item \pnt{2} if $a$ and $b$ are odd, then $\displaystyle\lg{a}{b}\lg{b}{a} = (-1)^{\frac{a-1}{2}\frac{b-1}{2}}.$
+\end{enumerate}
+Note that if $\displaystyle\lg{a}{b} = -1$, then $a$ is quadratic non-residue mod $b$. However, $\displaystyle\lg{a}{b} = 1$ does not imply that $a$ is a quadratic residue mod $b$.
+
+\vspace{5pt}
+
+\prob3\pnt{2} Find an integer solution to $x^4 - 7x^3 + 2x^2 + 2x + 1 \equiv 0\pmod{81}.$
+
+\hint{Try finding its roots mod $3$ first. Then find some $a$ so that $\nu_3(f(a)) > 2\nu_3(f'(a))$.}
+
+\vspace{5pt}
+
+\prob4\q Let $p$ be a prime. Prove that the smallest positive integer $d$ that is a quadratic non-residue mod $p$ is at most $1 + \sqrt{p}$.
+
+\hint{Our most used technique when the ``smallest positive integer'' is involved is the division algorithm. If $d>1+\sqrt{p}$, then $p/d<\sqrt{p}$.}
+
+\vspace{5pt}
+
+\prob5\pnt{6} Let $n$ be a positive integer such that $2^n - 1\mid 3^n - 1$. 
+\begin{enumerate}[(a)]
+    \item \pnt{2} Prove that $n$ is odd.
+
+    \hint{Which prime clearly does not divide $3^n - 1$?}
+    \item \pnt{2} Prove that if an odd prime $p$ divides $3^n - 1$, then $p\equiv \pm1\pmod{12}.$
+
+    \hint{Use (a).}
+    \item \pnt{2} Prove that $n = 1$.
+    
+    \hint{What is $2^n-1$ congruent to mod $12$?}
+\end{enumerate}
+
+
+\vspace{5pt}
+
+
+
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

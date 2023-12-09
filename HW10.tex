@@ -1,0 +1,132 @@
+\documentclass[12pt,letterpaper]{article}
+
+%\usepackage{url}
+\usepackage{fancyhdr,fancybox,comment}
+\usepackage{amstext}
+\usepackage{amsmath,amssymb,xcolor,enumerate}
+\usepackage{rotating}
+%\usepackage{multicol}
+%\usepackage{pictexwd,pictexplus}
+\usepackage{pictexwd}
+
+
+
+\setlength{\textwidth}{7in}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\parskip}{.3\baselineskip}
+\setlength{\topmargin}{-1.0in}
+%\setlength{\topmargin}{-0.2in}
+%\setlength{\topmargin}{-0in}
+\setlength{\textheight}{9.5in}
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\add}[1]{{\color{blue} #1}}
+\newcommand{\alert}[1]{{\color{red} #1}}
+\newcommand{\pnt}[1]{\textbf{[#1]}}
+\newcommand{\q}{\pnt{5} }
+\newcommand{\hint}[1]{\noindent{\color{purple} Hint: #1}}
+\renewcommand{\mark}[1]{\noindent{\color{red} #1}}
+\newcommand{\tot}[2]{\noindent\textsc{\footnotesize This homework is marked out of \textbf{#1} and graded out of \textbf{#2}}.}
+\newcommand{\ttt}{\tot{25}{20}}
+\renewcommand{\lg}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\leg}[2]{\left(\frac{#1}{#2}\right)}
+\def\R{{\mathbb R}}
+\def\Z{{\mathbb Z}}
+\def\N{{\mathbb N}}
+\def\Q{{\mathbb Q}}
+\def\C{{\mathbb C}}
+\def\F{{\mathbb F}}
+\def\lcm{{\rm lcm}}
+\def\prob#1{\vskip13pt\noindent\llap{{\bf #1:\ }}}
+\font\Bigrm=cmr12 scaled\magstep1
+
+%               Problem and Part
+\newcounter{problemnumber}
+\newcounter{partnumber}
+\newcommand{\Problem}{\stepcounter{problemnumber}\setcounter{partnumber}{0}\item[\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}]}
+\newcommand{\InProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{1.9in}{#1}}
+\newcommand{\InBigProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{2.75in}{#1}}
+\newcommand{\Part}{\stepcounter{partnumber}\item[(\alph{partnumber})]}
+\newcommand{\InPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{2.25in}{#1}}
+\newcommand{\InSmallPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{1.25in}{#1}}
+
+%% For Answerbox:
+\newcounter{answernumber}
+\newcommand{\Ans}{%
+  \stepcounter{answernumber}
+  \fbox{\parbox{.18in}{\hfil\theanswernumber\hfil}}
+}
+
+
+
+\pagestyle{empty}
+
+\begin{document}
+%\thispagestyle{fancy}
+%%
+\noindent{\Bigrm HW 10 due Friday November 24}
+
+%\ttt
+
+
+\prob1\q Let $p$ be an odd prime and let $m\geq2$ be an integer not divisible by $p$. Let $\pi_p:\Z[x]\rightarrow\F_p[x]$ denote the ring homomorphism induced by $\Z\rightarrow\F_p$. Let $d = o_m(p)$.
+\begin{enumerate}[(a)]
+    \item \pnt{2} Prove that the splitting field of $\pi_p(\Phi_m(x))$ over $\F_p$ is $\F_{p^d}$.
+
+    \hint{Which field extension of $\F_p$ can contain primitive $m$-th roots of unities?}
+    \item \pnt{1} Prove that $\pi_p(\Phi_m(x))$ factors into a product $\phi(m)/d$ irreducible polynomials in $\F_p[x]$.
+
+    \hint{Which field extension of $\F_p$ can contain primitive $m$-th roots of unities?}
+    \item \pnt{2} Let $q\neq p$ be an odd prime. Prove that $\pi_p(\Phi_q(x))$ factors into a product of an odd number of even degree irreducible polynomials in $\F_p[x]$ if and only if $\ds\lg{p}{q} = -1$. 
+
+    \hint{Let $\alpha$ be a primitive root mod $q$ and write $p = \alpha^k$ in $\F_q$. Use the parity of $\phi(q)/o_q(p)$ to deduce the parity of $k$.}
+\end{enumerate}
+
+\vspace{5pt}
+
+\prob2\q Let $p$ be an odd prime and let $f(x)\in\F_p[x]$ be a monic polynomial factored into $f_1(x)\cdots f_r(x)$ where $f_1(x),\ldots,f_r(x)$ are distinct monic irreducible polynomials in $\F_p[x]$. Prove that
+$$\lg{\Delta(f)}{p} = \prod_{i=1}^r \lg{\Delta(f_i)}{p}.$$
+
+\hint{Consider the case of $f(x) = g(x)h(x)$ where $g(x)$ and $h(x)$ are monic polynomials in $\F_p[x]$ with no common factors.}
+
+\vspace{5pt}
+
+\prob3\q Suppose $f(x)\in\F_p[x]$ is a monic irreducible polynomial of degree $d$, where $p$ is an odd prime. Prove that $\ds\lg{\Delta(f)}{p} = (-1)^{d-1}$. 
+
+\hint{Use HW 6 Problem 1 to write down the roots of $f(x)$, a square root $\beta$ of $\Delta(f)$ and compare $\beta^p$ with $\beta$.}
+
+\noindent Note that from $\Delta(\Phi_q(x)) = q^*D^2$ for some integer $D$ and Problem 1(c), Problem 2 and Problem 3, we have given another proof of quadratic reciprocity: $\ds\lg{q^*}{p} = \lg{p}{q}.$
+
+
+
+\vspace{5pt}
+
+\prob4\q Let $f(x)\in\Z[x]$. Prove that $\Delta(f)\equiv 0$ or $1$ mod $4$.
+
+\hint{Prove the stronger statement that the polynomial $G$ used to define the discriminant is of the form $J^2 + 4L$ in $\Z[x_1,\ldots,x_n]$.}
+
+\vspace{5pt}
+
+
+\prob5\pnt{5} An algebraic integer is a complex number $\alpha$ that is algebraic over $\Q$ and whose minimal polynomial over $\Q$ belongs to $\Z[x]$. Prove that if $\alpha$ and $\beta$ are algebraic integers, then so are $\alpha + \beta$ and $\alpha\beta$.
+
+\hint{Write down a polynomial that has $\alpha+\beta$ as a root, as ``symmetric'' as possible.}
+
+\noindent This implies that the set of algebraic integers belonging to a finite extension $K$ over $\Q$ is a subring of $K$, called the \textbf{ring of integers} of $K$. The element $\eta_1$ defined in class is an algebraic integer since it belongs to $\Z[\zeta_m]$. This gives another proof for its minimal polynomial to be in $\Z[x]$.
+
+
+
+\vspace{5pt}
+
+
+
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
