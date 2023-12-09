@@ -1,0 +1,76 @@
+\documentclass[12pt,letterpaper]{article}
+
+%\usepackage{url}
+\usepackage{fancyhdr,fancybox,comment}
+\usepackage{amstext}
+\usepackage{amsmath,amssymb,color,enumerate}
+\usepackage{rotating}
+%\usepackage{multicol}
+%\usepackage{pictexwd,pictexplus}
+\usepackage{pictexwd}
+
+
+
+\setlength{\textwidth}{7in}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\parskip}{.3\baselineskip}
+\setlength{\topmargin}{-1.0in}
+%\setlength{\topmargin}{-0.2in}
+%\setlength{\topmargin}{-0in}
+\setlength{\textheight}{9.5in}
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\add}[1]{{\color{blue} #1}}
+\newcommand{\alert}[1]{{\color{red} #1}}
+\def\R{{\mathbb R}}
+\def\Z{{\mathbb Z}}
+\def\N{{\mathbb N}}
+\def\Q{{\mathbb Q}}
+\def\C{{\mathbb C}}
+\def\F{{\mathbb F}}
+\def\lcm{{\rm lcm}}
+\def\prob#1{\vskip13pt\noindent\llap{{\bf #1:\ }}}
+\font\Bigrm=cmr12 scaled\magstep1
+
+%               Problem and Part
+\newcounter{problemnumber}
+\newcounter{partnumber}
+\newcommand{\answerbox}{\\[2mm]
+\fbox{ \begin{minipage}{18mm} \hfill\vspace{9mm} \end{minipage}}\\[5mm]}
+\newcommand{\Problem}{\stepcounter{problemnumber}\setcounter{partnumber}{0}\item[\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}]}
+\newcommand{\InProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{1.9in}{#1}}
+\newcommand{\InBigProblem}[1]{\stepcounter{problemnumber}\setcounter{partnumber}{0}\fbox{\parbox{.18in}{\hfil\theproblemnumber\hfil}}\ \ \parbox[t]{2.75in}{#1}}
+\newcommand{\Part}{\stepcounter{partnumber}\item[(\alph{partnumber})]}
+\newcommand{\InPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{2.25in}{#1}}
+\newcommand{\InSmallPart}[1]{\stepcounter{partnumber}(\alph{partnumber})\ \ \parbox[t]{1.25in}{#1}}
+
+%% For Answerbox:
+\newcounter{answernumber}
+\newcommand{\Ans}{%
+  \stepcounter{answernumber}
+  \fbox{\parbox{.18in}{\hfil\theanswernumber\hfil}}
+}
+
+
+
+\pagestyle{empty}
+
+\begin{document}
+%\thispagestyle{fancy}
+%%
+\noindent{\Bigrm Final Exam Practice Problems}
+\vskip15pt
+
+Determine if the following statements are True or False.
+
+\begin{enumerate}
+\item (*) There exists a positive integer $m$ such that $\Phi_m(69) = 420.$
+\item (**) Every positive rational number can be expressed as a quotient of products of numbers of the form $\binom{n}{\lfloor n/2\rfloor}$ where $n$ is a positive integer.
+\item $69$ is a quadratic residue mod $420$.
+\item (**) The additive group $(\Q,+)$ and the multiplicative group $(\Q^\times,\cdot)$ are isomorphic. \alert{Groups like these won't appear on the exam.}
+\item (**) $x^4+x+1$ is irreducible in $\mathbb Q[x].$
+\item (*) The sum $\ds\sum_{n=1}^\infty \frac{1}{\text{lcm}(1,2,\ldots,n)}$ is finite. \alert{There will be no infinite sum on the exam.}
+\item If $d>1$ is an integer such that $(d-1)!\equiv -1\pmod{d}$, then $d$ is a prime.
+\end{enumerate}
+\end{document}
